@@ -1,7 +1,6 @@
 #footer {
-  background-color: #8cabde;
+  background-color: black;
   font-size: 2em;
-  margin-top: 100%;
 }
 footer {
   display: flex;
@@ -9,6 +8,9 @@ footer {
   width: 40%;
   margin: auto;
   padding: 1.2%;
+}
+i {
+  color: aliceblue;
 }
 footer a i:hover {
   opacity: 0.7;

@@ -1,17 +1,18 @@
 import "./styles/HomeNav.css";
+import { Link } from "react-router-dom";
 const HomeNavbar = () => {
   return (
     <nav id="navbar-home">
-      <a href="google.com" id="logo">
+      <Link to="/" id="logo">
         Hire-me
-      </a>
+      </Link>
       <div id="navlinks">
-        <a href="google.com" id="signup">
+        <Link to="/signup" id="signup">
           Signup
-        </a>
-        <a href="google.com" id="login">
+        </Link>
+        <Link to="/login" id="login">
           Login
-        </a>
+        </Link>
       </div>
     </nav>
   );

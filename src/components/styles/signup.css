@@ -1,0 +1,44 @@
+#signup-head {
+  text-align: center;
+  line-height: 2;
+  font-size: 2em;
+}
+#signup-from {
+  width: 40%;
+  margin: 0 auto;
+}
+#signup-from label {
+  font-size: 1.2em;
+}
+#signup-from select {
+  padding: 1.2%;
+}
+#signup-from input,
+textarea {
+  width: 90%;
+  padding: 1.2%;
+}
+#signup-button,
+#signup-with-google {
+  width: 40%;
+  margin: 2% 30%;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 2.6%;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+#signup-with-google {
+  padding: 1.4%;
+  width: 20%;
+  margin: 2% 40%;
+}
+#signup-button:hover,
+#signup-with-google:hover {
+  background-color: #fff;
+  color: #000;
+}
