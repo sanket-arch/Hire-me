@@ -1,17 +1,19 @@
 #login-head {
   text-align: center;
   font-size: 2em;
-  line-height: 2;
-  padding-top: 2.5%;
+  padding-top: 1%;
 }
 #login-form {
   width: 30%;
   margin: auto;
-  padding: 2%;
+  padding: 1.5%;
 }
 #login-form input {
   width: 90%;
   padding: 2%;
+}
+#login-form select{
+  padding: 1.4%;
 }
 #login-button,
 #Login-with-google {

@@ -8,15 +8,20 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("Applicant");
+  const [isLoggingIn, setisLoggingIn] = useState(false);
   const navigate = useNavigate();
   const login = (e) => {
     e.preventDefault();
+    setisLoggingIn(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
         console.log(cred.user, ",,,, " + cred.user.uid);
-        navigate("/applicant");
+        setisLoggingIn(false);
+        role === "Applicant" ? navigate("/applicant") : navigate("/company");
       })
       .catch((err) => {
+        setisLoggingIn(false);
         console.log(err);
       });
   };
@@ -43,7 +48,28 @@ const Login = () => {
             }}
           />
           <br />
-          <button id="login-button">Login</button>
+          <label htmlFor="role">You are</label>
+          <br />
+          <select
+            name="Role"
+            id="loginRoleSelect"
+            onChange={(e) => {
+              setRole(e.target.value);
+            }}
+          >
+            <option disabled value>
+              -- select an option --
+            </option>
+            <option value="Applicant">Applicant</option>
+            <option value="Company">Company</option>
+          </select>
+          <br />
+          {!isLoggingIn && <button id="login-button">Login</button>}
+          {isLoggingIn && (
+            <button id="login-button" disabled>
+              Logiing In...
+            </button>
+          )}
         </form>
         <button id="Login-with-google">Login With Google</button>
       </div>

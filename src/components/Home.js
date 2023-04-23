@@ -6,7 +6,6 @@ const Home = () => {
   return (
     <>
       <HomeNavbar />
-
       <div id="home-body">
         <div id="tagline">
           <h1>welcome!</h1>
