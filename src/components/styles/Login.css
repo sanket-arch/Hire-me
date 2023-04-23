@@ -1,0 +1,38 @@
+#login-head {
+  text-align: center;
+  font-size: 2em;
+  line-height: 2;
+  padding-top: 2.5%;
+}
+#login-form {
+  width: 30%;
+  margin: auto;
+  padding: 2%;
+}
+#login-form input {
+  width: 90%;
+  padding: 2%;
+}
+#login-button,
+#Login-with-google {
+  background-color: #000;
+  border: 1.2px solid #000;
+  color: #fff;
+  font-size: 1.2em;
+  padding: 2%;
+  border-radius: 25px;
+  width: 30%;
+  margin: 3% 30%;
+  cursor: pointer;
+}
+#Login-with-google {
+  padding: 1%;
+  width: 20%;
+  margin: 1.5% 40%;
+}
+
+#login-button:hover,
+#Login-with-google:hover {
+  background-color: #fff;
+  color: #000;
+}

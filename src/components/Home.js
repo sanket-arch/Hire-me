@@ -7,13 +7,13 @@ const Home = () => {
     <>
       <HomeNavbar />
 
-      <div id="body">
+      <div id="home-body">
         <div id="tagline">
           <h1>welcome!</h1>
           <p>Find yourself at better place</p>
         </div>
         <div id="hero-img">
-          <Svgimg />
+          <Svgimg id="svg"/>
         </div>
       </div>
       <Footer />
