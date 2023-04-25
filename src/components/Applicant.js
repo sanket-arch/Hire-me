@@ -1,18 +1,19 @@
-import { signOut } from "firebase/auth";
-import { auth } from "../config/Firebase";
-import { useNavigate } from "react-router-dom";
-
+import Nav from "./Nav";
+import Footer from "./Footer";
+import JobCard from "./JobCard";
+import "./styles/applicant.css"
 const Applicant = () => {
-  const navigate = useNavigate();
-  const logout = () => {
-    signOut(auth).then(() => {
-      console.log("user logged out");
-      navigate("/");
-    });
-  };
   return (
     <>
-      <button onClick={logout}>logout</button>
+      <Nav usertype="Applicant" />
+      <div id="applicant-body">
+        <div id="search-box">
+          <input type="text" placeholder="Search job" />
+          <button>Search</button>
+        </div>
+        <JobCard />
+      </div>
+      <Footer />
     </>
   );
 };

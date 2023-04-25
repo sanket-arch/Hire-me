@@ -3,20 +3,31 @@ import Footer from "./Footer";
 import HomeNavbar from "./HomeNav";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { auth } from "../config/Firebase";
+import { auth, db } from "../config/Firebase";
 import { useNavigate } from "react-router-dom";
+import { getDoc, doc } from "firebase/firestore";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("Applicant");
   const [isLoggingIn, setisLoggingIn] = useState(false);
   const navigate = useNavigate();
+
   const login = (e) => {
     e.preventDefault();
     setisLoggingIn(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
-        console.log(cred.user, ",,,, " + cred.user.uid);
+        console.log(cred.user.uid);
+        const userRef = doc(db, role.toLowerCase(), cred.user.uid);
+        getDoc(userRef)
+          .then((doc) => {
+            console.log(doc.data());
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+
         setisLoggingIn(false);
         role === "Applicant" ? navigate("/applicant") : navigate("/company");
       })

@@ -1,0 +1,32 @@
+#postjob-body {
+  width: 60%;
+  margin: auto;
+}
+#postjob-body h2 {
+  text-align: center;
+  font-size: 1.3em;
+  padding: 1.1%;
+}
+#postjob-form {
+  width: 80%;
+  margin: auto;
+}
+#postjob-form input {
+  width: 90%;
+  padding: 1.1%;
+}
+#jobpost-button {
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: black;
+  font-size: 1.1em;
+  color: #fff;
+  padding: 1.5%;
+  width: 30%;
+  margin: 2% 30%;
+  cursor: pointer;
+}
+
+#jobpost-button:hover {
+  opacity: 0.8;
+}

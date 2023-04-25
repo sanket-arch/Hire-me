@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import HomeNavbar from "./HomeNav";
 import { auth, db } from "../config/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import "./styles/signup.css";
 import { useNavigate } from "react-router-dom";
 
@@ -31,28 +31,30 @@ const Signup = () => {
   const [role, setRole] = useState("Applicant");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const applicantCollectionRef = collection(db, "applicant");
+  // const applicantCollectionRef = collection(db, "applicant");
   const companyCollectionRef = collection(db, "company");
   const navigate = useNavigate();
+
   const signUp = (e) => {
     e.preventDefault();
     setIsAuthenticating(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((cred) => {
+        const applicantCollectionRef = doc(db, "applicant", cred.user.uid);
         setIsAuthenticating(false);
-        console.log("user created");
         if (role === "Applicant") {
           applicant.email = cred.user.email;
           applicant.id = cred.user.uid;
-          addDoc(applicantCollectionRef, applicant).then(() => {
+          setDoc(applicantCollectionRef, applicant).then(() => {
             console.log("user added");
+            console.log(cred.user.uid);
           });
         }
         if (role === "Company") {
           company.email = cred.user.email;
           company.id = cred.user.uid;
           addDoc(companyCollectionRef, company).then(() => {
-            console.log("compnay added");
+            console.log("Company added");
           });
         }
         navigate("/");
