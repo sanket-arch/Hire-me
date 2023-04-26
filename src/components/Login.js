@@ -1,8 +1,9 @@
 import "./styles/Login.css";
 import Footer from "./Footer";
 import HomeNavbar from "./HomeNav";
+import { userContext } from "../App";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { auth, db } from "../config/Firebase";
 import { useNavigate } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
@@ -12,7 +13,7 @@ const Login = () => {
   const [role, setRole] = useState("Applicant");
   const [isLoggingIn, setisLoggingIn] = useState(false);
   const navigate = useNavigate();
-
+  const userdetails=useContext(userContext);
   const login = (e) => {
     e.preventDefault();
     setisLoggingIn(true);
@@ -23,6 +24,7 @@ const Login = () => {
         getDoc(userRef)
           .then((doc) => {
             console.log(doc.data());
+            userdetails.setUserdetails(doc.data());
           })
           .catch((err) => {
             console.log(err);

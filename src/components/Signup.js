@@ -32,7 +32,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const applicantCollectionRef = collection(db, "applicant");
-  const companyCollectionRef = collection(db, "company");
+  // const companyCollectionRef = collection(db, "company");
   const navigate = useNavigate();
 
   const signUp = (e) => {
@@ -41,20 +41,21 @@ const Signup = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((cred) => {
         const applicantCollectionRef = doc(db, "applicant", cred.user.uid);
+        const companyCollectionRef = doc(db, "company", cred.user.uid);
         setIsAuthenticating(false);
         if (role === "Applicant") {
           applicant.email = cred.user.email;
           applicant.id = cred.user.uid;
           setDoc(applicantCollectionRef, applicant).then(() => {
-            console.log("user added");
-            console.log(cred.user.uid);
+            console.log("Add animation to show user created account");
+            
           });
         }
         if (role === "Company") {
           company.email = cred.user.email;
           company.id = cred.user.uid;
-          addDoc(companyCollectionRef, company).then(() => {
-            console.log("Company added");
+          setDoc(companyCollectionRef, company).then(() => {
+            console.log("Add animation to show company created account");
           });
         }
         navigate("/");

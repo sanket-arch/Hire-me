@@ -1,8 +1,11 @@
 import Footer from "./Footer";
 import Nav from "./Nav";
 import "./styles/postjob.css";
+import { useNavigate } from "react-router-dom";
 import { userContext } from "../App";
 import { useContext } from "react";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../config/Firebase";
 const jobdetails = {
   postedBy: "",
   role: "",
@@ -15,10 +18,16 @@ const jobdetails = {
 
 const Postjob = () => {
   const userdetails = useContext(userContext);
+  const navigate=useNavigate();
+  const jobRef = collection(db, "jobs");
   const postJob = (e) => {
     e.preventDefault();
-    if (userdetails.userdetails != null)
-      console.log(userdetails.userdetails.id);
+    jobdetails.postedBy=userdetails.userdetails.id;
+    addDoc(jobRef, jobdetails).then(() => {
+      console.log("job added");
+      navigate("/company");
+    });
+    
   };
   return (
     <>
@@ -26,17 +35,25 @@ const Postjob = () => {
       <div id="postjob-body">
         <h2>Post new Job</h2>
         <form id="postjob-form" onSubmit={postJob}>
-          <label htmlFor="postedby">Posted By</label>
-          <br />
-          <input type="text" name="postedby" />
-          <br />
           <label htmlFor="role">Role</label>
           <br />
-          <input type="text" name="role" />
+          <input
+            type="text"
+            name="role"
+            onChange={(e) => {
+              jobdetails.role = e.target.value;
+            }}
+          />
           <br />
           <label htmlFor="skills">Skills</label>
           <br />
-          <input type="text" name="skills" />
+          <input
+            type="text"
+            name="skills"
+            onChange={(e) => {
+              jobdetails.skills = e.target.value;
+            }}
+          />
           <br />
           <label htmlFor="jobdescription">Job description</label>
           <br />
@@ -45,19 +62,40 @@ const Postjob = () => {
             id="jobdescription"
             cols="5"
             rows="5"
+            onChange={(e) => {
+              jobdetails.jobdescription = e.target.value;
+            }}
           />
           <br />
           <label htmlFor="Stipend">Stipend</label>
           <br />
-          <input type="text" name="Stipend" />
+          <input
+            type="text"
+            name="Stipend"
+            onChange={(e) => {
+              jobdetails.stipend = e.target.value;
+            }}
+          />
           <br />
           <label htmlFor="location">Location</label>
           <br />
-          <input type="text" name="location" />
+          <input
+            type="text"
+            name="location"
+            onChange={(e) => {
+              jobdetails.location = e.target.value;
+            }}
+          />
           <br />
           <label htmlFor="lastdate">Last Date</label>
           <br />
-          <input type="date" name="lastdate" />
+          <input
+            type="date"
+            name="lastdate"
+            onChange={(e) => {
+              jobdetails.lastdate = e.target.value;
+            }}
+          />
           <br />
           <button id="jobpost-button">Post</button>
         </form>

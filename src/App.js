@@ -8,13 +8,20 @@ import Company from "./components/Company";
 import Postjob from "./components/Postjob";
 import { createContext, useState } from "react";
 export const userContext = createContext();
-
+let userdetail = null;
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(userdetail);
+  if (user != null) {
+    userdetail = user;
+  }
   return (
     <div className="App">
       <userContext.Provider
-        value={{ userdetails: user, setUserdetils: setUser }}
+        value={{
+          userdetails: user,
+          setUserdetails: setUser,
+          profileInfo: userdetail,
+        }}
       >
         <Routes>
           <Route path="/" element={<Home />} />
