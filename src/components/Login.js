@@ -1,19 +1,19 @@
 import "./styles/Login.css";
 import Footer from "./Footer";
 import HomeNavbar from "./HomeNav";
-import { userContext } from "../App";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useState, useContext } from "react";
+import { useContext, useState } from "react";
 import { auth, db } from "../config/Firebase";
 import { useNavigate } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
+import { userContext } from "../App";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("Applicant");
   const [isLoggingIn, setisLoggingIn] = useState(false);
   const navigate = useNavigate();
-  const userdetails=useContext(userContext);
+  const user = useContext(userContext);
   const login = (e) => {
     e.preventDefault();
     setisLoggingIn(true);
@@ -23,8 +23,9 @@ const Login = () => {
         const userRef = doc(db, role.toLowerCase(), cred.user.uid);
         getDoc(userRef)
           .then((doc) => {
-            console.log(doc.data());
-            userdetails.setUserdetails(doc.data());
+            localStorage.setItem("isLoggedIn", true);
+            localStorage.setItem("details", JSON.stringify(doc.data()));
+            user.setUserdetails(JSON.parse(localStorage.getItem("details")));
           })
           .catch((err) => {
             console.log(err);

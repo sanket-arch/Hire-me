@@ -8,26 +8,20 @@ import Company from "./components/Company";
 import Postjob from "./components/Postjob";
 import { createContext, useState } from "react";
 export const userContext = createContext();
-let userdetail = null;
 function App() {
-  const [user, setUser] = useState(userdetail);
-  if (user != null) {
-    userdetail = user;
-  }
+  const [user, setUser] = useState(null); 
   return (
     <div className="App">
       <userContext.Provider
         value={{
           userdetails: user,
           setUserdetails: setUser,
-          profileInfo: userdetail,
         }}
       >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
-
           <Route path="applicant" element={<Applicant />} />
           <Route path="company" element={<Company />} />
           <Route path="PostJobs" element={<Postjob />} />

@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import HomeNavbar from "./HomeNav";
 import { auth, db } from "../config/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import "./styles/signup.css";
 import { useNavigate } from "react-router-dom";
 
@@ -31,8 +31,6 @@ const Signup = () => {
   const [role, setRole] = useState("Applicant");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const applicantCollectionRef = collection(db, "applicant");
-  // const companyCollectionRef = collection(db, "company");
   const navigate = useNavigate();
 
   const signUp = (e) => {
@@ -48,7 +46,6 @@ const Signup = () => {
           applicant.id = cred.user.uid;
           setDoc(applicantCollectionRef, applicant).then(() => {
             console.log("Add animation to show user created account");
-            
           });
         }
         if (role === "Company") {

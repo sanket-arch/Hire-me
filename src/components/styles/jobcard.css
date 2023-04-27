@@ -1,0 +1,44 @@
+.jobCard {
+  font-display: flex;
+  flex-direction: row;
+  padding: 3%;
+  margin-bottom: 2.2%;
+  border: 0.5px solid #8cabde;
+}
+.jobCard h4 {
+  width: 70%;
+  font-weight: 900;
+}
+.jobcard-top {
+  display: flex;
+  justify-content: space-between;
+}
+.job-location {
+  min-width: 23%;
+  display: flex;
+  justify-content: space-around;
+}
+.fa-location-dot {
+  color: black;
+}
+.jobcard-middle {
+  padding: 2.3%;
+}
+.role {
+  font-weight: 600;
+}
+.job-other-info {
+  display: grid;
+  grid-template-columns: 2.3fr 1fr;
+  margin-top: 2%;
+  word-wrap: break-word;
+  text-align: justify;
+}
+.job-card-bottom{
+    border: 0;
+    background-color: #fff;
+    margin-left:75%;
+    margin-top: 2%;
+    font-size: 1.2em;
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ const Nav = (props) => {
   const navigate = useNavigate();
   const logout = () => {
     signOut(auth).then(() => {
+      localStorage.clear();
       navigate("/");
     });
   };
@@ -24,7 +25,7 @@ const Nav = (props) => {
         )}
         {props.usertype === "Company" && (
           <>
-            <Link to="/PostedJobs">All Jobs</Link>
+            <Link to="/company">All Jobs</Link>
             <Link to="/PostJobs">Post Job</Link>
             <Link to="/applieAapplicant">View Applicant</Link>
           </>

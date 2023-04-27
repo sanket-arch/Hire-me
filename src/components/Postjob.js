@@ -2,8 +2,6 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 import "./styles/postjob.css";
 import { useNavigate } from "react-router-dom";
-import { userContext } from "../App";
-import { useContext } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/Firebase";
 const jobdetails = {
@@ -17,17 +15,16 @@ const jobdetails = {
 };
 
 const Postjob = () => {
-  const userdetails = useContext(userContext);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const jobRef = collection(db, "jobs");
   const postJob = (e) => {
     e.preventDefault();
-    jobdetails.postedBy=userdetails.userdetails.id;
+    const user = JSON.parse(localStorage.getItem("details"));
+    jobdetails.postedBy = user.id;
     addDoc(jobRef, jobdetails).then(() => {
       console.log("job added");
       navigate("/company");
     });
-    
   };
   return (
     <>
