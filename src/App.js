@@ -7,9 +7,12 @@ import Applicant from "./components/Applicant";
 import Company from "./components/Company";
 import Postjob from "./components/Postjob";
 import { createContext, useState } from "react";
+import Jobdetials from "./components/Jobdetials";
+import ErrorPage from "./components/ErrorPage";
+
 export const userContext = createContext();
 function App() {
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
   return (
     <div className="App">
       <userContext.Provider
@@ -24,7 +27,9 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="applicant" element={<Applicant />} />
           <Route path="company" element={<Company />} />
+          <Route path="posts/:postid" element={<Jobdetials />} />
           <Route path="PostJobs" element={<Postjob />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </userContext.Provider>
     </div>

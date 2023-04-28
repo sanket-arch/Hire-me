@@ -32,7 +32,6 @@
   grid-template-columns: 2.3fr 1fr;
   margin-top: 2%;
   word-wrap: break-word;
-  text-align: justify;
 }
 .job-card-bottom{
     border: 0;

@@ -11,6 +11,7 @@ const jobdetails = {
   jobdescription: "",
   stipend: "",
   location: "",
+  status: "",
   lastdate: "",
 };
 
@@ -93,7 +94,21 @@ const Postjob = () => {
               jobdetails.lastdate = e.target.value;
             }}
           />
+          <br /> <label htmlFor="role">You are</label>
           <br />
+          <select
+            name="status"
+            id="setStatus"
+            onChange={(e) => {
+              jobdetails.status = e.target.value;
+            }}
+          >
+            <option disabled value>
+              -- select an option --
+            </option>
+            <option value="Active">Active</option>
+            <option value="Disable">Disable</option>
+          </select>
           <button id="jobpost-button">Post</button>
         </form>
       </div>

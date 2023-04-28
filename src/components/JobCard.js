@@ -1,5 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import "./styles/jobcard.css";
 const JobCard = (props) => {
+  const navigate = useNavigate();
+  const handleViewjob = (e) => {
+    navigate("/posts/" + props.jobId);
+  };
+
   return (
     <div className="jobCard">
       <section className="jobcard-top">
@@ -20,8 +26,8 @@ const JobCard = (props) => {
           </section>
         </section>
       </section>
-      <button className="job-card-bottom">
-        view job{" "}
+      <button className="job-card-bottom" onClick={handleViewjob}>
+        view job
         <i className="fa-solid fa-angle-right" style={{ color: "#000000" }}></i>
       </button>
     </div>

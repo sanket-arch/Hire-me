@@ -19,12 +19,12 @@ const Login = () => {
     setisLoggingIn(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((cred) => {
-        console.log(cred.user.uid);
         const userRef = doc(db, role.toLowerCase(), cred.user.uid);
         getDoc(userRef)
           .then((doc) => {
             localStorage.setItem("isLoggedIn", true);
             localStorage.setItem("details", JSON.stringify(doc.data()));
+            localStorage.setItem("role",role)
             user.setUserdetails(JSON.parse(localStorage.getItem("details")));
           })
           .catch((err) => {

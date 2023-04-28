@@ -33,3 +33,8 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 2.2%;
 }
+
+#loading-msg {
+  text-align: center;
+  font-size: 2em;
+}

@@ -15,6 +15,9 @@
   width: 90%;
   padding: 1.1%;
 }
+#setStatus {
+  padding: 1.2%;
+}
 #jobpost-button {
   border: 1px solid #000;
   border-radius: 10px;

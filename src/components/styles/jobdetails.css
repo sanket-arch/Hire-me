@@ -1,0 +1,69 @@
+#job-details {
+  width: 60%;
+  margin: auto;
+}
+#job-details h3 {
+  text-align: center;
+  font-size: 2em;
+  font-weight: 700;
+  padding: 1.2%;
+}
+#job-details #jobpostedBY{
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 2;
+}
+#job-details #top {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-around;
+  width: 80%;
+  margin: auto;
+  padding: 1.2%;
+}
+#top .job-location {
+  width: 47%;
+  margin: auto;
+}
+.fa-calendar-days {
+  color: #000;
+}
+#stipend,
+#top .last-date {
+  display: flex;
+  justify-content: space-around;
+}
+
+#middle {
+  padding: 1.2%;
+}
+#middle .skills,
+#middle .about-job {
+  padding: 1.4%;
+}
+#middle .about-job {
+  text-align: justify;
+}
+#bottom {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+  margin: auto;
+  padding: 2%;
+}
+#bottom button {
+  padding: 2.3%;
+  border: 1px solid #000;
+  border-radius: 10px;
+  color: #fff;
+  background-color: #000;
+  cursor: pointer;
+}
+#bottom button:hover{
+    opacity: 0.92;
+}
+#bottom #delete-job{
+    border: 1px solid #fc2a3c;
+    background-color: #fc2a3c;
+}
+

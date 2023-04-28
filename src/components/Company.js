@@ -13,36 +13,47 @@ import {
 import { db } from "../config/Firebase";
 
 const jobRef = collection(db, "jobs");
-async function getdata(setJobs, setUser) {
-  try {
-    const user = await JSON.parse(localStorage.getItem("details"));
-    setUser(user);
-    const jobarray = await query(
-      jobRef,
-      where("postedBy", "==", user.id),
-      orderBy("lastdate", "desc")
-    );
-    onSnapshot(jobarray, (snapshot) => {
-      let joblist = [];
-      snapshot.docs.forEach((doc) => {
-        joblist.push({ ...doc.data(), id: doc.id });
-      });
-      setJobs(joblist);
-    });
-  } catch (err) {
-    console.log(err);
-  }
-}
+// function getdata(setJobs, setUser) {
+//     const user = JSON.parse(localStorage.getItem("details"));
+//     setUser(user);
+//     const jobarray =  query(
+//       jobRef,
+//       where("postedBy", "==", user.id),
+//       orderBy("lastdate", "desc")
+//     );
+//     onSnapshot(jobarray, (snapshot) => {
+//       let joblist = [];
+//       snapshot.docs.forEach((doc) => {
+//         joblist.push({ ...doc.data(), id: doc.id });
+//       });
+//       setJobs(joblist);
+//     });
+// }
 const Company = () => {
-  const [jobs, setJobs] = useState([]);
-  const [user, setUser] = useState(null);
-  getdata(setJobs, setUser);
+  const [jobs, setJobs] = useState([]); 
+  const [isLoading, setLoading] = useState(true);
+  const userC = JSON.parse(localStorage.getItem("details"));
+
+  const jobarray = query(
+    jobRef,
+    where("postedBy", "==", userC.id),
+    orderBy("lastdate", "desc")
+  );
+  onSnapshot(jobarray, (snapshot) => {
+    let joblist = [];
+    snapshot.docs.forEach((doc) => {
+      joblist.push({ ...doc.data(), id: doc.id });
+    });
+    setJobs(joblist);
+    setLoading(false);
+  });
   return (
     <div>
       <Nav usertype="Company" />
-      <div id="company">
+      {isLoading&& <p id="loading-msg">Loading...</p>}
+      {!isLoading &&<div id="company">
         <h2>All Posted Job</h2>
-
+      
         <div id="search-posted-job">
           <input type="text" placeholder="serach role" />
           <button>search</button>
@@ -53,7 +64,8 @@ const Company = () => {
               return (
                 <JobCard
                   key={idx}
-                  companyname={user.name}
+                  jobId={job.id}
+                  companyname={userC.name}
                   location={job.location}
                   role={job.role}
                   skills={job.skills}
@@ -62,7 +74,7 @@ const Company = () => {
               );
             })}
         </div>
-      </div>
+      </div>}
       <Footer />
     </div>
   );
