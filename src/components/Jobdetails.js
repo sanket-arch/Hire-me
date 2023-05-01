@@ -2,32 +2,46 @@ import { useNavigate, useParams } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import "./styles/jobdetails.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../config/Firebase";
 
-const Jobdetials = () => {
+const Jobdetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [isloading, setLoading] = useState(true);
   const [job, setJob] = useState(null);
-  const jobRef = doc(db, "jobs", params.postid);
+  const [company, setCompany] = useState(null);
+  // const companyname = JSON.parse(localStorage.getItem("details"));
+  const role = localStorage.getItem("role");
 
   const deleteJob = (e) => {
+    const jobRef = doc(db, "jobs", params.postid);
     deleteDoc(jobRef).then(() => {
       setLoading(true);
       navigate("/company");
     });
   };
   const goBack = () => {
-    navigate("/company");
+    role === "Company" ? navigate("/company") : navigate("/applicant");
   };
+  useEffect(() => {
+    function fetchdata() {
+      const jobRef = doc(db, "jobs", params.postid);
+      onSnapshot(jobRef, (snapshot) => {
+        const companyRef = doc(db, "company", snapshot.data().postedBy);
+        onSnapshot(companyRef, (csnapshot) => {
+          setCompany(csnapshot.data());
+          console.log(csnapshot.data());
+          setLoading(false);
+        });
+        console.log(snapshot.data().postedBy);
+        setJob(snapshot.data());
+      });
+    }
+    fetchdata();
+  }, [params]);
 
-  onSnapshot(jobRef, (snapshot) => {
-    setLoading(false);
-    console.log(snapshot.data());
-    setJob(snapshot.data());
-  });
   // const handleStatus = (e) => {
   //   let status;
   //   if (e.target.value === "Active") {
@@ -37,16 +51,15 @@ const Jobdetials = () => {
   //     status: status,
   //   });
   // };
-  const companyname = JSON.parse(localStorage.getItem("details"));
-  const role = localStorage.getItem("role");
+
   return (
     <>
       <Nav usertype="Company" />
       {isloading && <p id="loading-msg">Loading...</p>}
-      {!isloading && job != null && (
+      {!isloading && (
         <div id="job-details">
           <h3 id="job-title">{job.role}</h3>
-          <h4 id="jobpostedBY">Posted By: {companyname.name}</h4>
+          <h4 id="jobpostedBY">Posted By: {company.name}</h4>
           <div id="jobInformation">
             <section id="top">
               <section className="last-date">
@@ -103,4 +116,4 @@ const Jobdetials = () => {
   );
 };
 
-export default Jobdetials;
+export default Jobdetails;

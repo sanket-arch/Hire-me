@@ -7,8 +7,9 @@ import Applicant from "./components/Applicant";
 import Company from "./components/Company";
 import Postjob from "./components/Postjob";
 import { createContext, useState } from "react";
-import Jobdetials from "./components/Jobdetials";
-import ErrorPage from "./components/ErrorPage";
+import Jobdetials from "./components/Jobdetails";
+// import ErrorPage from "./components/ErrorPage";
+import Progress from "./components/ProgessPage";
 
 export const userContext = createContext();
 function App() {
@@ -29,7 +30,7 @@ function App() {
           <Route path="company" element={<Company />} />
           <Route path="posts/:postid" element={<Jobdetials />} />
           <Route path="PostJobs" element={<Postjob />} />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<Progress />} />
         </Routes>
       </userContext.Provider>
     </div>
