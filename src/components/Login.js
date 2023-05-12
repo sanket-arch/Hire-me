@@ -23,9 +23,9 @@ const Login = () => {
         getDoc(userRef)
           .then((doc) => {
             localStorage.setItem("isLoggedIn", true);
-            localStorage.setItem("details", JSON.stringify(doc.data()));
+            localStorage.setItem("user", JSON.stringify(doc.data()));
             localStorage.setItem("role",role)
-            user.setUserdetails(JSON.parse(localStorage.getItem("details")));
+            user.setUserdetails(JSON.parse(localStorage.getItem("user")));
           })
           .catch((err) => {
             console.log(err);

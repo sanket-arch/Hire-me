@@ -3,22 +3,21 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import "./styles/jobdetails.css";
 import { useEffect, useState } from "react";
-import { deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { deleteDoc, doc, onSnapshot, getDoc ,collection, addDoc} from "firebase/firestore";
 import { db } from "../config/Firebase";
 
 const Jobdetails = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [isloading, setLoading] = useState(true);
-  const [job, setJob] = useState(null);
-  const [company, setCompany] = useState(null);
-  // const companyname = JSON.parse(localStorage.getItem("details"));
+  const [job, setJob] = useState({});
+  const [company, setCompany] = useState({});
   const role = localStorage.getItem("role");
 
   const deleteJob = (e) => {
+    setLoading(true);
     const jobRef = doc(db, "jobs", params.postid);
     deleteDoc(jobRef).then(() => {
-      setLoading(true);
       navigate("/company");
     });
   };
@@ -28,15 +27,13 @@ const Jobdetails = () => {
   useEffect(() => {
     function fetchdata() {
       const jobRef = doc(db, "jobs", params.postid);
-      onSnapshot(jobRef, (snapshot) => {
+      getDoc(jobRef).then((snapshot) => {
         const companyRef = doc(db, "company", snapshot.data().postedBy);
         onSnapshot(companyRef, (csnapshot) => {
           setCompany(csnapshot.data());
-          console.log(csnapshot.data());
           setLoading(false);
         });
-        console.log(snapshot.data().postedBy);
-        setJob(snapshot.data());
+        setJob({ ...snapshot.data(), id: snapshot.id });
       });
     }
     fetchdata();
@@ -52,6 +49,16 @@ const Jobdetails = () => {
   //   });
   // };
 
+  const applyForJob = (e) => {
+    const appliedRef = collection(db, "applied");
+   
+    const userApplied = JSON.parse(localStorage.getItem("user"));
+    addDoc(appliedRef,{appliedby:userApplied,Appliedfor:job}).then(()=>{
+      console.log("added succesfully");
+      navigate(-1);
+    })
+    
+  };
   return (
     <>
       <Nav usertype="Company" />
@@ -104,7 +111,9 @@ const Jobdetails = () => {
                   </button>
                 </>
               ) : (
-                <button id="apply-button">Apply</button>
+                <button id="apply-button" onClick={applyForJob}>
+                  Apply
+                </button>
               )}
             </section>
           </div>

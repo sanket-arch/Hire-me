@@ -13,13 +13,12 @@ import {
 import { db } from "../config/Firebase";
 const userC = JSON.parse(localStorage.getItem("details"));
 const Applicant = () => {
-  const [jobs, setJobs] = useState(null);
+  const [jobs, setJobs] = useState({});
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     function fetchdata() {
       const jobRef = collection(db, "jobs");
-      console.log(userC);
       const jobarray = query(
         jobRef,
         where("postedBy", "==", userC.id),
