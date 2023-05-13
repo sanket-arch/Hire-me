@@ -3,7 +3,16 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import "./styles/jobdetails.css";
 import { useEffect, useState } from "react";
-import { deleteDoc, doc, onSnapshot, getDoc ,collection, addDoc} from "firebase/firestore";
+import {
+  deleteDoc,
+  doc,
+  onSnapshot,
+  getDoc,
+  collection,
+  addDoc,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../config/Firebase";
 
 const Jobdetails = () => {
@@ -22,7 +31,8 @@ const Jobdetails = () => {
     });
   };
   const goBack = () => {
-    role === "Company" ? navigate("/company") : navigate("/applicant");
+    // role === "Company" ? navigate("/company") : navigate("/applicant");
+    navigate(-1);
   };
   useEffect(() => {
     function fetchdata() {
@@ -51,13 +61,22 @@ const Jobdetails = () => {
 
   const applyForJob = (e) => {
     const appliedRef = collection(db, "applied");
-   
     const userApplied = JSON.parse(localStorage.getItem("user"));
-    addDoc(appliedRef,{appliedby:userApplied,Appliedfor:job}).then(()=>{
-      console.log("added succesfully");
-      navigate(-1);
-    })
-    
+    const userquery = query(
+      appliedRef,
+      where("appliedby.id", "==", userApplied.id)
+    );
+    const jobquery = query(appliedRef, where("Appliedfor.id", "==", job.id));
+    if (userquery && jobquery) {
+      alert("Already Applied for thiws job")
+    } else {
+      addDoc(appliedRef, { appliedby: userApplied, Appliedfor: job }).then(
+        () => {
+          console.log("added succesfully");
+          navigate(-1);
+        }
+      );
+    }
   };
   return (
     <>

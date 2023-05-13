@@ -10,6 +10,7 @@ import { createContext, useState } from "react";
 import Jobdetials from "./components/Jobdetails";
 // import ErrorPage from "./components/ErrorPage";
 import Progress from "./components/ProgessPage";
+import Appliedjob from "./components/Appliedjob";
 
 export const userContext = createContext();
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="company" element={<Company />} />
           <Route path="posts/:postid" element={<Jobdetials />} />
           <Route path="PostJobs" element={<Postjob />} />
+          <Route path="Appliedjob" element={<Appliedjob />} />
           <Route path="*" element={<Progress />} />
         </Routes>
       </userContext.Provider>

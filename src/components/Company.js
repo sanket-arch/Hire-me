@@ -43,7 +43,6 @@ const Applicant = () => {
       {!isLoading && (
         <div id="company">
           <h2>All Posted Job</h2>
-
           <div id="search-posted-job">
             <input type="text" placeholder="serach role" />
             <button>search</button>
