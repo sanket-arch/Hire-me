@@ -11,6 +11,7 @@ import Jobdetials from "./components/Jobdetails";
 // import ErrorPage from "./components/ErrorPage";
 import Progress from "./components/ProgessPage";
 import Appliedjob from "./components/Appliedjob";
+import Appliedapplicant from "./components/Appliedapplicant";
 
 export const userContext = createContext();
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="posts/:postid" element={<Jobdetials />} />
           <Route path="PostJobs" element={<Postjob />} />
           <Route path="Appliedjob" element={<Appliedjob />} />
+          <Route path="viewapplicant" element={<Appliedapplicant />} />
           <Route path="*" element={<Progress />} />
         </Routes>
       </userContext.Provider>

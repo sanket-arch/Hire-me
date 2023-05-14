@@ -11,7 +11,7 @@ import {
   query,
 } from "firebase/firestore";
 import { db } from "../config/Firebase";
-const userC = JSON.parse(localStorage.getItem("details"));
+const userC = JSON.parse(localStorage.getItem("user"));
 const Applicant = () => {
   const [jobs, setJobs] = useState({});
   const [isLoading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ const Applicant = () => {
       const jobRef = collection(db, "jobs");
       const jobarray = query(
         jobRef,
-        where("postedBy", "==", userC.id),
+        where("postedBy.id", "==", userC.id),
         orderBy("lastdate", "desc")
       );
       getDocs(jobarray).then((snapshot) => {

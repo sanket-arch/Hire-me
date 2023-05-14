@@ -3,7 +3,7 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import JobCard from "./JobCard";
 import { useEffect, useState } from "react";
-import { collection, getDoc, doc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/Firebase";
 
 const Applicant = () => {
@@ -16,11 +16,7 @@ const Applicant = () => {
       getDocs(jobRef).then((snapshot) => {
         let joblist = [];
         snapshot.docs.forEach((jdoc) => {
-          const jobdocRef = doc(db, "company", jdoc.data().postedBy);
-          getDoc(jobdocRef).then((jobdoc) => {
-            setCompany(jobdoc.data());
-          });
-
+          setCompany(jdoc.data().postedBy);
           joblist.push({
             ...jdoc.data(),
             id: jdoc.id,

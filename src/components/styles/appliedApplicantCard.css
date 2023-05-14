@@ -1,0 +1,22 @@
+.appliedapplicant-card {
+  border: 1px solid #000;
+  padding: 2%;
+  text-align: center;
+}
+.appliedapplicant-card h3 {
+  line-height: 2;
+}
+.appliedapplicant-card h4 {
+  line-height: 2;
+  text-decoration: underline;
+}
+
+.appliedapplicant-card button {
+  background-color: #000;
+  border: 1px solid #000;
+  color: #fff;
+  padding: 1.4%;
+  margin: 1.2%;
+  margin-top: 2%;
+  cursor: pointer;
+}

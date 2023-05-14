@@ -27,7 +27,7 @@ const Nav = (props) => {
           <>
             <Link to="/company">All Jobs</Link>
             <Link to="/PostJobs">Post Job</Link>
-            <Link to="/applieAapplicant">View Applicant</Link>
+            <Link to="/viewapplicant">View Applicant</Link>
           </>
         )}
         <Link to="applicantProfile">

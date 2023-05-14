@@ -20,8 +20,8 @@ const Postjob = () => {
   const jobRef = collection(db, "jobs");
   const postJob = (e) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem("details"));
-    jobdetails.postedBy = user.id;
+    const user = JSON.parse(localStorage.getItem("user"));
+    jobdetails.postedBy = user;
     addDoc(jobRef, jobdetails).then(() => {
       console.log("job added");
       navigate("/company");

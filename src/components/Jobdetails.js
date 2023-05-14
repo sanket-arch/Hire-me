@@ -3,16 +3,7 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import "./styles/jobdetails.css";
 import { useEffect, useState } from "react";
-import {
-  deleteDoc,
-  doc,
-  onSnapshot,
-  getDoc,
-  collection,
-  addDoc,
-  query,
-  where,
-} from "firebase/firestore";
+import { deleteDoc, doc, getDoc, collection, addDoc } from "firebase/firestore";
 import { db } from "../config/Firebase";
 
 const Jobdetails = () => {
@@ -31,52 +22,40 @@ const Jobdetails = () => {
     });
   };
   const goBack = () => {
-    // role === "Company" ? navigate("/company") : navigate("/applicant");
     navigate(-1);
   };
   useEffect(() => {
     function fetchdata() {
       const jobRef = doc(db, "jobs", params.postid);
       getDoc(jobRef).then((snapshot) => {
-        const companyRef = doc(db, "company", snapshot.data().postedBy);
-        onSnapshot(companyRef, (csnapshot) => {
-          setCompany(csnapshot.data());
-          setLoading(false);
-        });
+        setCompany(snapshot.data().postedBy);
+        setLoading(false);
         setJob({ ...snapshot.data(), id: snapshot.id });
       });
     }
     fetchdata();
   }, [params]);
 
-  // const handleStatus = (e) => {
-  //   let status;
-  //   if (e.target.value === "Active") {
-  //     status = "Disable";
-  //   } else status = "Active";
-  //   updateDoc(jobRef, {
-  //     status: status,
-  //   });
-  // };
-
   const applyForJob = (e) => {
+
     const appliedRef = collection(db, "applied");
     const userApplied = JSON.parse(localStorage.getItem("user"));
-    const userquery = query(
-      appliedRef,
-      where("appliedby.id", "==", userApplied.id)
-    );
-    const jobquery = query(appliedRef, where("Appliedfor.id", "==", job.id));
-    if (userquery && jobquery) {
-      alert("Already Applied for thiws job")
-    } else {
+    // const userquery = query(
+    //   appliedRef,
+    //   where("appliedby.id", "==", userApplied.id)
+    // );
+    // const jobquery = query(appliedRef, where("Appliedfor.id", "==", job.id));
+
+    // if (appliedJob && appliedUser) {
+    //   alert("Already Applied for this job!!");
+    // } else {
       addDoc(appliedRef, { appliedby: userApplied, Appliedfor: job }).then(
         () => {
           console.log("added succesfully");
           navigate(-1);
         }
       );
-    }
+    // }
   };
   return (
     <>

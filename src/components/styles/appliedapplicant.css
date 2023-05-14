@@ -1,0 +1,16 @@
+#appliedapplicant-body {
+  width: 70%;
+  height: 100%;
+  margin: 2% auto;
+}
+
+#appliedapplicant-body h2 {
+  text-align: center;
+  line-height: 3;
+}
+#appliedapplicant-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2.2%;
+  row-gap: 7%;
+}
