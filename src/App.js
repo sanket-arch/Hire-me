@@ -12,6 +12,7 @@ import Jobdetials from "./components/Jobdetails";
 import Progress from "./components/ProgessPage";
 import Appliedjob from "./components/Appliedjob";
 import Appliedapplicant from "./components/Appliedapplicant";
+import MyInterview from "./components/MyInterview";
 
 export const userContext = createContext();
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="PostJobs" element={<Postjob />} />
           <Route path="Appliedjob" element={<Appliedjob />} />
           <Route path="viewapplicant" element={<Appliedapplicant />} />
+          <Route path="myinterview" element={<MyInterview />} />
           <Route path="*" element={<Progress />} />
         </Routes>
       </userContext.Provider>

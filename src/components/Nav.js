@@ -20,7 +20,7 @@ const Nav = (props) => {
           <>
             <Link to="/applicant">All Jobs</Link>
             <Link to="/Appliedjob">Applied Jobs</Link>
-            <Link to="/interview">My Interviews</Link>
+            <Link to="/myinterview">My Interviews</Link>
           </>
         )}
         {props.usertype === "Company" && (
