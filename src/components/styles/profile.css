@@ -2,12 +2,13 @@
   min-height: 75vh;
 }
 #profile-body h2 {
-  line-height: 4;
+  line-height: 2;
   text-align: center;
 }
 #profile-info {
   width: 70%;
   margin: auto;
+  margin-bottom: 1.2%;
   padding: 2%;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -26,7 +27,7 @@
 }
 
 #userinfo-holder {
-  padding: 3%;
+  padding: 1.3%;
 }
 #userinfo-holder p {
   font-size: 1.2em;

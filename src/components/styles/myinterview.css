@@ -1,6 +1,6 @@
 #my-interview-body {
   width: 70%;
-  height: 100%;
+  min-height: 66vh;
   margin: 2% auto;
 }
 

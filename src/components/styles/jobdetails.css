@@ -1,3 +1,6 @@
+#job-detail-page {
+  min-height: 75vh;
+}
 #job-details {
   width: 60%;
   margin: auto;
@@ -8,7 +11,7 @@
   font-weight: 700;
   padding: 1.2%;
 }
-#job-details #jobpostedBY{
+#job-details #jobpostedBY {
   text-align: center;
   font-size: 1.2em;
   line-height: 2;
@@ -59,11 +62,27 @@
   background-color: #000;
   cursor: pointer;
 }
-#bottom button:hover{
-    opacity: 0.92;
+#bottom button:hover {
+  opacity: 0.92;
 }
-#bottom #delete-job{
-    border: 1px solid #fc2a3c;
-    background-color: #fc2a3c;
+#bottom #delete-job {
+  border: 1px solid #fc2a3c;
+  background-color: #fc2a3c;
 }
 
+#jobInformation {
+  position: relative;
+}
+#applying-msg {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: 800;
+  line-height: 2;
+  background-color: #ccdcf1;
+  border: 1px solid #000;
+  padding: 3%;
+  width: 40%;
+}

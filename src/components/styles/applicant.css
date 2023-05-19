@@ -1,6 +1,10 @@
-#applicant-body {
-  width: 60%;
-  margin: 1.3% auto;
+#applicant-page {
+  width: 70%;
+  min-height: 66vh;
+  margin: 2% auto;
+}
+#applicant-page h2 {
+  text-align: center;
 }
 #search-box {
   width: 90%;
@@ -23,6 +27,6 @@
   width: 20%;
   cursor: pointer;
 }
-#search-box button:hover{
-    opacity: 0.8;
+#search-box button:hover {
+  opacity: 0.9;
 }

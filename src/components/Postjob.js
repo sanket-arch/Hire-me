@@ -4,6 +4,7 @@ import "./styles/postjob.css";
 import { useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../config/Firebase";
+import { useState } from "react";
 const jobdetails = {
   postedBy: "",
   role: "",
@@ -16,15 +17,18 @@ const jobdetails = {
 };
 
 const Postjob = () => {
+  const [isPosting, setPosting] = useState(false);
   const navigate = useNavigate();
   const jobRef = collection(db, "jobs");
   const postJob = (e) => {
     e.preventDefault();
+    setPosting(true);
     const user = JSON.parse(localStorage.getItem("user"));
     jobdetails.postedBy = user;
     addDoc(jobRef, jobdetails).then(() => {
       console.log("job added");
       navigate("/company");
+      setPosting(false);
     });
   };
   return (
@@ -111,6 +115,7 @@ const Postjob = () => {
           </select>
           <button id="jobpost-button">Post</button>
         </form>
+        {isPosting && <p id="posting-msg">Posting your Job...please Wait!!</p>}
       </div>
       <Footer />
     </>

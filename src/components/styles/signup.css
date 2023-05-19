@@ -18,7 +18,7 @@ textarea {
   width: 90%;
   padding: 1.2%;
 }
-#signup-button,
+.signup-button,
 #signup-with-google {
   width: 40%;
   margin: 2% 30%;
@@ -37,8 +37,13 @@ textarea {
   width: 20%;
   margin: 2% 40%;
 }
-#signup-button:hover,
+.noloading-signup-btn:hover,
 #signup-with-google:hover {
   background-color: #fff;
   color: #000;
+}
+
+.loading-btn {
+  background-color: #fff;
+  border: 0;
 }

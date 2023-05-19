@@ -1,10 +1,12 @@
 #postjob-body {
   width: 60%;
   margin: auto;
+  position: relative;
 }
 #postjob-body h2 {
   text-align: center;
   font-size: 1.3em;
+  line-height: 3;
   padding: 1.1%;
 }
 #postjob-form {
@@ -32,4 +34,15 @@
 
 #jobpost-button:hover {
   opacity: 0.8;
+}
+
+#posting-msg {
+  position: absolute;
+  top: 30%;
+  left: 14%;
+  font-size: 2em;
+  opacity: 0.5;
+  padding: 4%;
+  border: 1px solid #000;
+  background-color: rgb(184, 182, 180);
 }

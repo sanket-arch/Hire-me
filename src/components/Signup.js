@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import "./styles/signup.css";
 import { useNavigate } from "react-router-dom";
-
+import { Spinner } from "react-bootstrap";
 const applicant = {
   id: "",
   name: "",
@@ -95,6 +95,7 @@ const Signup = () => {
               applicant.name = e.target.value;
               company.name = e.target.value;
             }}
+            required
           />
           <br />
           <label htmlFor="Email">Email</label>
@@ -116,6 +117,7 @@ const Signup = () => {
               applicant.mobile = e.target.value;
               company.mobile = e.target.value;
             }}
+            required
           />
           <br />
           <label htmlFor="role">You are</label>
@@ -126,6 +128,7 @@ const Signup = () => {
             onChange={(e) => {
               setRole(e.target.value);
             }}
+            required
           >
             <option disabled value>
               -- select an option --
@@ -143,6 +146,7 @@ const Signup = () => {
                 onChange={(e) => {
                   applicant.resume_link = e.target.value;
                 }}
+                required
               />
               <br />
             </>
@@ -158,6 +162,7 @@ const Signup = () => {
                 onChange={(e) => {
                   company.about = e.target.value;
                 }}
+                required
               />
               <br />
               <label htmlFor="Address">Address</label>
@@ -167,6 +172,7 @@ const Signup = () => {
                 onChange={(e) => {
                   company.address = e.target.value;
                 }}
+                required
               />
               <br />
               <label htmlFor="website-link">Website link</label>
@@ -176,6 +182,7 @@ const Signup = () => {
                 onChange={(e) => {
                   company.websiteLink = e.target.value;
                 }}
+                required
               />
               <br />
             </>
@@ -188,6 +195,7 @@ const Signup = () => {
               applicant.linkdin_link = e.target.value;
               company.linkdin_link = e.target.value;
             }}
+            required
           />
           <br />
           <label htmlFor="Password">Password</label>
@@ -200,10 +208,10 @@ const Signup = () => {
             required
           />
           <br />
-          {!isauthenticating && <button id="signup-button">sign up</button>}
+          {!isauthenticating && <button className="signup-button noloading-signup-btn">sign up</button>}
           {isauthenticating && (
-            <button id="signup-button" disabled>
-              signning up...
+            <button className="signup-button loading-btn" >
+              <Spinner animation="border" />
             </button>
           )}
           <br />

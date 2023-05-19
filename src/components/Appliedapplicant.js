@@ -8,7 +8,7 @@ import { collection, onSnapshot, query, where } from "firebase/firestore";
 const Appliedapplicant = () => {
   const [applicantList, setApplicantList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [isAnyapplicant, setIsapplicant] = useState(false);
   useEffect(() => {
     function getapplicant() {
       setIsLoading(true);
@@ -23,6 +23,9 @@ const Appliedapplicant = () => {
         snapshot.docs.forEach((appliedInfo) => {
           templist.push({ ...appliedInfo.data(), docId: appliedInfo.id });
         });
+        if (templist.length === 0) {
+          setIsapplicant(true);
+        }
         setApplicantList(templist);
         setIsLoading(false);
       });
@@ -41,20 +44,25 @@ const Appliedapplicant = () => {
         </div>
         {isLoading && <div id="loding-msg">Loading...</div>}
         {!isLoading && (
-          <div id="appliedapplicant-cards">
-            {applicantList.map((applieddetail, idx) => {
-              return (
-                <AppliedApplicantCard
-                  key={idx}
-                  currentDocument={applieddetail.docId}
-                  jobtitle={applieddetail.Appliedfor.role}
-                  applicantname={applieddetail.appliedby.name}
-                  resumelink={applieddetail.appliedby.resume_link}
-                  jobid={applieddetail.Appliedfor.id}
-                />
-              );
-            })}
-          </div>
+          <>
+            {isAnyapplicant && (
+              <p id="Empty-message">No one has applied for Job Yet!!</p>
+            )}
+            <div id="appliedapplicant-cards">
+              {applicantList.map((applieddetail, idx) => {
+                return (
+                  <AppliedApplicantCard
+                    key={idx}
+                    currentDocument={applieddetail.docId}
+                    jobtitle={applieddetail.Appliedfor.role}
+                    applicantname={applieddetail.appliedby.name}
+                    resumelink={applieddetail.appliedby.resume_link}
+                    jobid={applieddetail.Appliedfor.id}
+                  />
+                );
+              })}
+            </div>
+          </>
         )}
       </div>
       <Footer />

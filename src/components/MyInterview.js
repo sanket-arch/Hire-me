@@ -9,6 +9,7 @@ import { db } from "../config/Firebase";
 const MyInterview = () => {
   const [appliedDetails, setAppliedDetails] = useState([]);
   const [isLoading, setisLoading] = useState(true);
+  const [isAnyjobs, setIsAnyjobs] = useState(true);
   useEffect(() => {
     function fetchInterviewdeatils() {
       setisLoading(true);
@@ -22,9 +23,14 @@ const MyInterview = () => {
         let infoArray = [];
         snapshot.docs.forEach((appliedInfo) => {
           infoArray.push({ ...appliedInfo.data(), docid: appliedInfo.id });
-          setisLoading(false);
         });
         setAppliedDetails(infoArray);
+        if (infoArray.length === 0) {
+          setIsAnyjobs(true);
+        } else {
+          setIsAnyjobs(false);
+        }
+        setisLoading(false);
       });
     }
     fetchInterviewdeatils();
@@ -33,21 +39,24 @@ const MyInterview = () => {
     <>
       <Nav usertype="Applicant" />
       <div id="my-interview-body">
-        <h2>Interview Calls</h2>{" "}
+        <h2>Your Interview Calls</h2>
         {isLoading && <div id="loading-msg">Loading...</div>}
         {!isLoading && (
-          <div id="interview-cards">
-            {appliedDetails.map((applieddetail) => {
-              return (
-                <AppliedApplicantCard
-                  key={applieddetail.Appliedfor.id}
-                  jobid={applieddetail.Appliedfor.id}
-                  jobtitle={applieddetail.Appliedfor.role}
-                  comapnyname={applieddetail.Appliedfor.postedBy.name}
-                />
-              );
-            })}
-          </div>
+          <>
+            {isAnyjobs && <p id="Empty-message">You Have No Intreview calls</p>}
+            <div id="interview-cards">
+              {appliedDetails.map((applieddetail) => {
+                return (
+                  <AppliedApplicantCard
+                    key={applieddetail.Appliedfor.id}
+                    jobid={applieddetail.Appliedfor.id}
+                    jobtitle={applieddetail.Appliedfor.role}
+                    comapnyname={applieddetail.Appliedfor.postedBy.name}
+                  />
+                );
+              })}
+            </div>
+          </>
         )}
       </div>
       <Footer />
