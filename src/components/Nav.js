@@ -30,7 +30,7 @@ const Nav = (props) => {
             <Link to="/viewapplicant">View Applicant</Link>
           </>
         )}
-        <Link to="applicantProfile">
+        <Link to="/profile">
           <i className="fa-regular fa-user" id="user-img"></i>
         </Link>
         <button onClick={logout} id="logout-button">

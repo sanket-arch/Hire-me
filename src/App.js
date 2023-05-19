@@ -13,6 +13,7 @@ import Progress from "./components/ProgessPage";
 import Appliedjob from "./components/Appliedjob";
 import Appliedapplicant from "./components/Appliedapplicant";
 import MyInterview from "./components/MyInterview";
+import Profile from "./components/Profile";
 
 export const userContext = createContext();
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="Appliedjob" element={<Appliedjob />} />
           <Route path="viewapplicant" element={<Appliedapplicant />} />
           <Route path="myinterview" element={<MyInterview />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="*" element={<Progress />} />
         </Routes>
       </userContext.Provider>

@@ -1,0 +1,63 @@
+#profile-body {
+  min-height: 75vh;
+}
+#profile-body h2 {
+  line-height: 4;
+  text-align: center;
+}
+#profile-info {
+  width: 70%;
+  margin: auto;
+  padding: 2%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border: 1px solid #000;
+}
+#profile-pic-holder {
+  width: 50%;
+  height: 70%;
+}
+#profile-pic {
+  height: 100%;
+  width: 100%;
+  border-radius: 45%;
+  border: 1px solid #000;
+  object-fit: contain;
+}
+
+#userinfo-holder {
+  padding: 3%;
+}
+#userinfo-holder p {
+  font-size: 1.2em;
+  line-height: 2;
+}
+#resumeLinkdin-btns {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 3%;
+}
+#resumeLinkdin-btns a {
+  border: 1px solid #000;
+  padding: 3%;
+}
+#resume-btn,
+#website-btn {
+  background-color: #000;
+  color: #fff;
+}
+#linkdin-btn {
+  background-color: #030635;
+  color: #fff;
+}
+#edit-info-btn {
+  display: block;
+  background-color: #000;
+  color: #fff;
+  width: 80%;
+  padding: 1.2%;
+  text-align: center;
+  font-size: 1.3em;
+  line-height: 1.4;
+}
