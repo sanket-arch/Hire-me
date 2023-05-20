@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+## Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Job Application Platform is a web-based application that serves as an intermediary platform for connecting job seekers with companies offering job opportunities. The platform provides an intuitive and user-friendly interface for applicants to browse and apply for jobs and for companies to post job listings.
 
-## Available Scripts
+[visit website](https://hire-me-tau.vercel.app/).
+## Installation
 
-In the project directory, you can run:
+Make sure you have latest version of node.js, if not then first download it from [node](https://nodejs.org/en).
 
-### `npm start`
-
+Open the folder in editor  and navigate to the folder and run the following command in the orders
+```
+npm install
+```
+Above command will install all the necessary package used in this project.
+```
+npm start
+```
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
+### Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Key Features
+### User Registration and Authentication:
+> Applicants and companies can create user accounts with their personal details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+>User authentication ensures secure access to the platform.
+### Job Listing:
+> Companies can create and post job listings, including job titles, descriptions, requirements, and locations.
 
-### Analyzing the Bundle Size
+> Companies can manage and update their job listings as needed.
+### Application Submission:
+> Applicants can view job details and submit their applications directly through the platform.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> Company can view the applied applicant and also can call them for an interview.
+### Applicant Profile:
+> Applicants can create and maintain their profiles, including personal information, work experience, education, and skills.
 
-### Making a Progressive Web App
+> Profiles can be customized and updated, enabling companies to assess applicant qualifications.
+### Company Profile:
+> Companies can create and manage their profiles, providing information about the organization, including a description, logo, and contact details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+> Company profiles showcase job listings posted by the company and provide insights into the company's culture and values.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Technology Stack
+The Job Application Platform can be developed using a combination of technologies, including:
 
-### Deployment
+#### Front-end 
+>HTML, CSS, JavaScript, React.
+#### Back-end
+> Firebase.
+#### Database 
+> Firestore Database.
+#### Authentication
+> Firebase Authentication.
+#### Additional Libraries and Frameworks
+> react-router-dom, react-bootstrap.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Conclusion and future work
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I have completed initial phase of the application and in the next phase, going to add some additional features and do some error handling.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
