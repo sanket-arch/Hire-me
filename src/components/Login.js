@@ -124,7 +124,7 @@ const Login = () => {
         sample Applicant Profile: <br />
         username: rajkumarsanket4@gmail.com
         <br />
-        password:12345467 <br />
+        password:1234567 <br />
       </div>
       <Footer />
     </>
