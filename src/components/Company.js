@@ -5,7 +5,7 @@ import JobCard from "./JobCard";
 import { useEffect, useState } from "react";
 import { collection, getDocs, where, orderBy, query } from "firebase/firestore";
 import { db } from "../config/Firebase";
-const userC = JSON.parse(localStorage.getItem("user"));
+
 const Applicant = () => {
   const [jobs, setJobs] = useState({});
   const [isLoading, setLoading] = useState(true);
@@ -13,6 +13,7 @@ const Applicant = () => {
   useEffect(() => {
     function fetchdata() {
       setLoading(true);
+      const userC = JSON.parse(localStorage.getItem("user"));
       const jobRef = collection(db, "jobs");
       const jobarray = query(
         jobRef,

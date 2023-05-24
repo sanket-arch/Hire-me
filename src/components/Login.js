@@ -120,8 +120,8 @@ const Login = () => {
       <div>
         Sample company profile: <br />
         username: info@radarr.com <br />
-        password:12345467 <br />
-        sample Applicant Profile <br />
+        password:1234567 <br /> <br />
+        sample Applicant Profile: <br />
         username: rajkumarsanket4@gmail.com
         <br />
         password:12345467 <br />
