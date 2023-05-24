@@ -3,7 +3,7 @@ import "./styles/progess.css";
 const Progress = () => {
   const navigate = useNavigate();
   const goback = () => {
-    navigate(-1);
+    navigate("/");
   };
   return (
     <div id="progress-page">
