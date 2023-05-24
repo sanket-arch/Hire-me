@@ -106,14 +106,25 @@ const Login = () => {
             <option value="Company">Company</option>
           </select>
           <br />
-          {!isLoggingIn && <button className="login-button login-btn-noloading">Login</button>}
+          {!isLoggingIn && (
+            <button className="login-button login-btn-noloading">Login</button>
+          )}
           {isLoggingIn && (
-            <button className="login-button loading-btn" >
+            <button className="login-button loading-btn">
               <Spinner animation="border" />
             </button>
           )}
         </form>
         <button id="Login-with-google">Login With Google</button>
+      </div>
+      <div>
+        Sample company profile: <br />
+        username: info@radarr.com <br />
+        password:12345467 <br />
+        sample Applicant Profile <br />
+        username: rajkumarsanket4@gmail.com
+        <br />
+        password:12345467 <br />
       </div>
       <Footer />
     </>

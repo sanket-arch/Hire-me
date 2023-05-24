@@ -59,7 +59,7 @@ const Jobdetails = () => {
   };
   return (
     <>
-      <Nav usertype="Company" />
+      <Nav usertype={role} />
       <div id="job-detail-page">
         {isloading && <p id="loading-msg">Loading...</p>}
         {!isloading && (
