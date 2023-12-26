@@ -34,19 +34,14 @@ const Login = () => {
     e.preventDefault();
     setisLoggingIn(true);
     signInWithEmailAndPassword(auth, email, password)
-      .then((cred) => {
+      .then(async (cred) => {
         const userRef = doc(db, role.toLowerCase(), cred.user.uid);
-        getDoc(userRef)
-          .then((doc) => {
+        const docSnap = await  getDoc(userRef)          
             localStorage.setItem("isLoggedIn", true);
-            localStorage.setItem("user", JSON.stringify(doc.data()));
+            localStorage.setItem("user", JSON.stringify(docSnap.data()));
             localStorage.setItem("role", role);
             user.setUserdetails(JSON.parse(localStorage.getItem("user")));
-          })
-          .catch((err) => {
-            console.log(err.code);
-          });
-
+        console.log(docSnap);
         setisLoggingIn(false);
         role === "Applicant" ? navigate("/applicant") : navigate("/company");
       })
